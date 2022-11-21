@@ -17,7 +17,7 @@ export class Campaign {
   })
   created_at: Date;
 
-  @Prop({ type: Array })
+  @Prop({ type: [MongooseSchema.Types.ObjectId], ref: 'Player' })
   players: [];
 
   @Prop({ type: MongooseSchema.Types.ObjectId, required: true })

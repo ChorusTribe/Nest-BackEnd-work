@@ -1,9 +1,9 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
+import { ObjectId } from 'mongoose';
 
-@Schema({ id: true })
+@Schema({ _id: true })
 export class Player {
-  @Prop({ type: String })
-  _id: String;
+  _id: ObjectId;
 
   @Prop({ type: String })
   discord_id: String;

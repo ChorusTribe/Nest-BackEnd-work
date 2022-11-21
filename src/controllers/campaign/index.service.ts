@@ -38,4 +38,16 @@ export class CampaignService {
     await model.save();
     return '';
   }
+
+  async addPlayers(id: string, players: string[]) {
+    const model = await this.campaignModel.findById(id);
+    model.players.push(players);
+    await model.save();
+    return '';
+  }
+
+  async getData(id: string) {
+    const model = await this.campaignModel.findById(id).populate('players');
+    return model;
+  }
 }

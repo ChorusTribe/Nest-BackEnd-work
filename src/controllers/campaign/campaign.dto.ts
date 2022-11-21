@@ -28,3 +28,8 @@ export class RemoveStepCampaignDto {
   @ApiProperty()
   readonly step_id: string;
 }
+
+export class AddPlayersCampaignDto {
+  @ApiProperty()
+  readonly player_ids: string[];
+}

@@ -5,6 +5,7 @@ import {
   UpdateStatusCampaignDto,
   AddStepCampaignDto,
   RemoveStepCampaignDto,
+  AddPlayersCampaignDto,
 } from './campaign.dto';
 import { CampaignService } from './index.service';
 import { CampaignType } from './index.types';
@@ -41,8 +42,15 @@ export class CampaignController {
     return 'success';
   }
 
-  @Get('/campaign')
-  get(): CampaignType[] {
-    return [];
+  @Put('/campaign/add_players/:id')
+  async addPlayers(@Param('id') id, @Body() param: AddPlayersCampaignDto) {
+    await this.campaignService.addPlayers(id, param.player_ids);
+    return 'success';
+  }
+
+  @Get('/campaign/:id')
+  async get(@Param('id') id: string): Promise<CampaignType[]> {
+    const result = await this.campaignService.getData(id);
+    return result;
   }
 }
